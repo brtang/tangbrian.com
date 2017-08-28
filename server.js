@@ -6,43 +6,10 @@ app.use(require('body-parser')());
 
 
 
-//Set handlebars
-/*
-var handlebars = require('express3-handlebars').create({
-        defaultLayout:'main',
-        helpers: {
-            section: function(name, options){
-                if(!this._sections) this._sections = {};
-                this._sections[name] = options.fn(this);
-                return null;
-            }
-        }        
-});
-
-app.engine('handlebars', handlebars.engine);
-app.set('view engine', 'handlebars');
-*/
 
 
 app.set('port', process.env.PORT || 8080);
 
-
-//MongoDB stuff
-/*
-var mongoose = require('mongoose');
-var db = mongoose.connection;
-db.on('error', console.error);
-
- var formSchema = new mongoose.Schema({
-        name: String,
-        email: String,
-        text: String
-    });
-
-    var Form = mongoose.model('Form', formSchema);
-    
-mongoose.connect('mongodb://localhost:27017/test');
-*/
 
 //SendGrid stuff
  /* var helper = require('sendgrid').mail
@@ -108,7 +75,7 @@ app.post('/view1', function(req, res) {
     })
 
     
-     res.redirect(303, '/about');
+     res.redirect(303, '/');
 });    
     
 

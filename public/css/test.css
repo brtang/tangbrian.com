@@ -338,7 +338,7 @@ font-size: 25px;
    
     width: 100%;
    /* height: 20%; */
-   height: 40%;
+   height: 50%;
     position: fixed;
     opacity: 0.6;
     left: 0px;
@@ -408,6 +408,47 @@ font-size: 25px;
    
 }
 
+/*-------------------------------*/
+/*         Forms         */
+/*-------------------------------*/
+.parent{
+    position: relative;
+}
+.form-desc{
+    text-align: center;
+     color: black;
+    font-weight: 550;
+
+}
+
+.input{
+    position: relative;
+    margin: auto;
+    width: 30%;
+    margin-bottom: 2%;
+    
+}
+
+.textarea{
+    
+    width: 30%;
+     display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 4px;
+    
+}
+
+.submit-button{
+    padding-top: 10px;
+    width: 35px;
+    height: 35px;
+    position: relative;
+    margin: auto;
+    left: 65px;
+
+
+}
 /*-------------------------------*/
 /*           Responsive          */
 /*-------------------------------*/
