@@ -8,7 +8,7 @@ app.use(require('body-parser')());
 
 
 
-app.set('port', process.env.PORT || 8080);
+app.set('port', process.env.PORT || 80);
 
 
 //SendGrid stuff
@@ -32,12 +32,15 @@ app.set('port', process.env.PORT || 8080);
     console.log(response.headers)
   })*/
 
-app.use('/', express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/resume', express.static(path.join(__dirname, 'public/imgs/Resume.pdf')));
 
-app.get('*', function(req, res){
-return res.redirect('/')});
+app.get('/*', function(req, res){
+    res.sendFile(__dirname + '/public/index.html');
+});
+
+
 
 //Catch form submits from About page    
 app.post('/view1', function(req, res) {
