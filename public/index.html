@@ -136,82 +136,89 @@
                         <h1 id="title"> Contact</h1>
                         <div class="contact-header-border"></div>
                     </div>
-                    <div class="row">
-                        <p class="form-desc">
-                             Want to get in contact or have a question about how something works? 
-                        </p>
-                        <p class="form-desc">
-                            Submit a form below and I'll do my best to get back at you as quickly as possible!
-                        </p>
-                    </div>
-                  
-                    <div class="row " ng-controller="signupController">
-                        <form name="signup_form" ng-submit="sub()" >
-                            <input type="text" class="input form-control" placeholder="Name" name="name"  ng-model="signup.name"
-                                ng-minlength=3
-                                ng-maxlength=20 
-                                ng-class="{error: signup_form.name.$dirty && signup_form.name.$invalid}"
-                                required />
-                            <div class="error" ng-show="signup_form.name.$dirty && signup_form.name.$invalid ">
-                                <small class="error"
-                                    ng-show="signup_form.name.$error.required">
-                                    Your name is required.
-                                </small>
-                                <small class="error"
-                                    ng-show="signup_form.name.$error.minlength">
-                                    Your name is required to be at least 3 characters
-                                </small>
-                                <small class="error"
-                                    ng-show="signup_form.name.$error.maxlength">
-                                    Your name cannot be longer than 20 characters
-                                </small>
-                            </div>   
-                            <input type="email" class="input form-control" placeholder="Email" name="email"  ng-model="signup.email"
-                              ng-minlength=3 ng-maxlength=40 
-                              ng-class="{error: signup_form.email.$dirty && signup_form.email.$invalid}"
-                              required />
-                            <div class="error" ng-show="signup_form.email.$dirty && signup_form.email.$invalid ">
-                                <small class="error"
-                                    ng-show="signup_form.email.$error.required">
-                                    Your email is required.
-                                </small>
-                                <small class="error"
-                                    ng-show="signup_form.email.$error.minlength">
-                                    Your email is required to be at least 3 characters
-                                </small>
-                                <small class="error"
-                                    ng-show="signup_form.email.$error.email">
-                                    That is not a valid email. Please input a valid email.
-                                </small>
-                                <small class="error"
-                                    ng-show="signup_form.email.$error.maxlength">
-                                    Your email cannot be longer than 40 characters
-                                </small>
-                            </div>
-                            <textarea type="text" placeholder="Question" class="textarea" name="textarea" ng-model="signup.text"
-                              ng-minlength=3 ng-maxlength=100 
-                              ng-class="{error: signup_form.name.$dirty && signup_form.name.$invalid}"
-                              required></textarea>    
-                            <div class="submit-button">
-                                <button type="submit" class="" >Submit</button>    
-                            </div>    
-                            <div class="error" ng-show="signup_form.email.$dirty && signup_form.email.$invalid && signup_form.submitted">
-                                <small class="error"
-                                    ng-show="signup_form.textarea.$error.required">
-                                    Please input a question or comment.
-                                </small>
-                                <small class="error"
-                                    ng-show="signup_form.textarea.$error.minlength">
-                                    Your question is required to be at least 3 characters
-                                </small>
-                                <small class="error"
-                                    ng-show="signup_form.textarea.$error.maxlength">
-                                    Your question cannot be longer than 100 characters
-                                </small>
-                            </div> 
+                   
+                    <div id="container">
+                        <div class="row left-section" ng-controller="signupController">
+                            <form name="signup_form" ng-submit="sub()" >
+                                <input type="text" class="input form-control" placeholder="Name" name="name"  ng-model="signup.name"
+                                    ng-minlength=3
+                                    ng-maxlength=20 
+                                    ng-class="{error: signup_form.name.$dirty && signup_form.name.$invalid}"
+                                    required />
+                                <div class="error" ng-show="signup_form.name.$dirty && signup_form.name.$invalid ">
+                                    <small class="error"
+                                        ng-show="signup_form.name.$error.required">
+                                        Your name is required.
+                                    </small>
+                                    <small class="error"
+                                        ng-show="signup_form.name.$error.minlength">
+                                        Your name is required to be at least 3 characters
+                                    </small>
+                                    <small class="error"
+                                        ng-show="signup_form.name.$error.maxlength">
+                                        Your name cannot be longer than 20 characters
+                                    </small>
+                                </div>   
+                                <input type="email" class="input form-control" placeholder="Email" name="email"  ng-model="signup.email"
+                                  ng-minlength=3 ng-maxlength=40 
+                                  ng-class="{error: signup_form.email.$dirty && signup_form.email.$invalid}"
+                                  required />
+                                <div class="error" ng-show="signup_form.email.$dirty && signup_form.email.$invalid ">
+                                    <small class="error"
+                                        ng-show="signup_form.email.$error.required">
+                                        Your email is required.
+                                    </small>
+                                    <small class="error"
+                                        ng-show="signup_form.email.$error.minlength">
+                                        Your email is required to be at least 3 characters
+                                    </small>
+                                    <small class="error"
+                                        ng-show="signup_form.email.$error.email">
+                                        That is not a valid email. Please input a valid email.
+                                    </small>
+                                    <small class="error"
+                                        ng-show="signup_form.email.$error.maxlength">
+                                        Your email cannot be longer than 40 characters
+                                    </small>
+                                </div>
+                                <textarea type="text" placeholder="Question" class="textarea" name="textarea" ng-model="signup.text"
+                                  ng-minlength=3 ng-maxlength=100 
+                                  ng-class="{error: signup_form.name.$dirty && signup_form.name.$invalid}"
+                                  required></textarea>    
+                                <div class="submit-button">
+                                    <button type="submit" class="" >Submit</button>    
+                                </div>    
+                                <div class="error" ng-show="signup_form.email.$dirty && signup_form.email.$invalid && signup_form.submitted">
+                                    <small class="error"
+                                        ng-show="signup_form.textarea.$error.required">
+                                        Please input a question or comment.
+                                    </small>
+                                    <small class="error"
+                                        ng-show="signup_form.textarea.$error.minlength">
+                                        Your question is required to be at least 3 characters
+                                    </small>
+                                    <small class="error"
+                                        ng-show="signup_form.textarea.$error.maxlength">
+                                        Your question cannot be longer than 100 characters
+                                    </small>
+                                </div> 
 
-                        </form>             
-                    </div> 
+                            </form>             
+                        </div> 
+                        
+                        <div class="row right-section">
+                            <p class="form-desc">
+                                 Want to get in contact or have a question about how something works? 
+                            </p>
+                            <p class="form-desc">
+                                Submit a form below and I'll do my best to get back at you as quickly as possible!
+                            </p>
+                            <p class="form-desc">
+                                email:brtangsj@gmail.com
+                            </p>
+                        </div>
+                        <div id="clear"></div>
+                    </div>
                 </div>
             </div>
         </div>

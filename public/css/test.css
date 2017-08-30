@@ -1,4 +1,6 @@
-
+html{
+height: 2000px;
+}
 body,
 html {  min-height: 100%;  }
 
@@ -428,7 +430,7 @@ font-size: 25px;
 /*         Contact section         */
 /*-------------------------------*/
 .main-content{
-    height: 800px;
+    height: 1400px;
 }
 
 .contact-section{
@@ -436,9 +438,31 @@ font-size: 25px;
     bottom: 0;
 }
 
+#container{
+    width: 100%;
+     margin-left: 13%;
+}
+
+.left-section{
+    width: 500px;
+    float: left;
+    margin-right: 0px;
+
+}
+
+.right-section{
+    float: left;
+    margin-left: 0;
+    width: 300px;
+
+}
+#clear{
+    clear: both;
+}
+
 /* Contact section Paragraph styles */
 .form-desc{
-    text-align: center;
+    text-align: left; 
     color: black;
     font-weight: 550;
 
@@ -465,7 +489,7 @@ font-size: 25px;
 .input{
     position: relative;
     margin: auto;
-    width: 30%;
+    width: 60%;
     margin-bottom: 2%;
     
 }
@@ -473,7 +497,8 @@ font-size: 25px;
 /* Contact section's text area form styles */
 .textarea{
     
-    width: 30%;
+    width: 60%;
+    height: 100px;
      display: block;
     margin-left: auto;
     margin-right: auto;
