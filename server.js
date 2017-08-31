@@ -43,7 +43,7 @@ app.get('/*', function(req, res){
 
 
 //Catch form submits from About page    
-app.post('/view1', function(req, res) {
+app.post('/form', function(req, res) {
     console.log(req.body.name);
     console.log(req.body.email);
     console.log(req.body.text);

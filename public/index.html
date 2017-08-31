@@ -16,10 +16,10 @@
     <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet"> <!-- Google fonts -->
       <link href="css/test.css" type="text/css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script> <!-- AngularJS -->
-    
-       
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-messages.js"></script> <!-- ngMessages -->
+      
 </head>
-<body ng-app="myApp">
+<body ng-app="myApp" ng-controller="signupController">
  
     <div id="wrapper" class="">
         <div class="overlay" style="display: none;"></div>
@@ -29,7 +29,7 @@
             <ul class="nav sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="#">
-                      <!-- Brian Tang -->
+                       Brian Tang 
                     </a>
                 </li>
                 <li>
@@ -136,11 +136,16 @@
                         <h1 id="title"> Contact</h1>
                         <div class="contact-header-border"></div>
                     </div>
-                   
+                    
+                    <div class="flash-message" ng-show="flash.isMessage()">
+                        <div class="{{'alert alert-' + notification.type}}" >{{notification.message}}<span id="close" style="float:right; display:inline-block; padding:2px 5px; background:#ccc;" ng-click="flash.hideFlash()"> x </span></div>
+                         
+                    </div>
+                                                       
                     <div id="container">
-                        <div class="row left-section" ng-controller="signupController">
+                        <div class="row left-section" >
                             <form name="signup_form" ng-submit="sub()" >
-                                <input type="text" class="input form-control" placeholder="Name" name="name"  ng-model="signup.name"
+                                <input type="text" class="input form-control" placeholder="Name" name="name" ng-model="signup.name"
                                     ng-minlength=3
                                     ng-maxlength=20 
                                     ng-class="{error: signup_form.name.$dirty && signup_form.name.$invalid}"
