@@ -19,7 +19,7 @@ app.set('port', process.env.PORT || 80);
   content = new helper.Content('text/plain', 'Hello, Email!')
   mail = new helper.Mail(from_email, subject, to_email, content)
  
-  var sg = require('sendgrid')('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');
+  var sg = require('sendgrid')('XXXXXXXXXXXXXXXXXXXXXXXXX');
   var request = sg.emptyRequest({
     method: 'POST',
     path: '/v3/mail/send',
@@ -64,7 +64,7 @@ app.post('/form', function(req, res) {
     content = new helper.Content('text/plain', req.body.name + '\n' + req.body.email + '\n' + req.body.text)
     mail = new helper.Mail(from_email, subject, to_email, content)
  
-    var sg = require('sendgrid')('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');
+    var sg = require('sendgrid')('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
     var request = sg.emptyRequest({
         method: 'POST',
         path: '/v3/mail/send',
