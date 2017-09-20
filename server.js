@@ -1,52 +1,29 @@
+// NPM Packages
 var express = require('express');
 var path = require('path');
+var helper = require('sendgrid').mail
+var sg = require('sendgrid')(config.key);
+
+// Custom imports
+var config = require('./config/config');
+
+// Initialiaze Express server  
 var app = express();
-//Link in body-parser
-app.use(require('body-parser')());
-
-
-
-
-
 app.set('port', process.env.PORT || 80);
 
-
-//SendGrid stuff
- /* var helper = require('sendgrid').mail
-  from_email = new helper.Email('brtang@ucsc.edu')
-  to_email = new helper.Email('brtang@ucsc.edu')
-  subject = 'BrianTang.com: New Form Response'
-  content = new helper.Content('text/plain', 'Hello, Email!')
-  mail = new helper.Mail(from_email, subject, to_email, content)
- 
-  var sg = require('sendgrid')('XXXXXXXXXXXXXXXXXXXXXXXXX');
-  var request = sg.emptyRequest({
-    method: 'POST',
-    path: '/v3/mail/send',
-    body: mail.toJSON()
-  });
- 
-  sg.API(request, function(error, response) {
-    console.log(response.statusCode)
-    console.log(response.body)
-    console.log(response.headers)
-  })*/
-
+// Middleware
+app.use(require('body-parser')());
 app.use(express.static(path.join(__dirname, 'public')))
-
 app.use('/resume', express.static(path.join(__dirname, 'public/imgs/Resume.pdf')));
 
+// Catch-all to render home page
 app.get('/*', function(req, res){
     res.sendFile(__dirname + '/public/index.html');
 });
 
 
-
-//Catch form submits from About page    
+// Catch form responses from Contact form and use SendGrid to send the response to my email   
 app.post('/form', function(req, res) {
-    console.log(req.body.name);
-    console.log(req.body.email);
-    console.log(req.body.text);
     
    /* var form = new Form({
         name: req.body.name,
@@ -57,14 +34,14 @@ app.post('/form', function(req, res) {
         if(err) return console.error(err);
         console.dir(form);
     });*/
-     var helper = require('sendgrid').mail
-    from_email = new helper.Email('brtang@ucsc.edu')
-    to_email = new helper.Email('brtang@ucsc.edu')
-    subject = 'BrianTang.com: New Form Response'
+    
+    //var helper = require('sendgrid').mail
+    from_email = new helper.Email(config.email)
+    to_email = new helper.Email(config.email)
+    //subject = 'BrianTang.com: New Form Response'
     content = new helper.Content('text/plain', req.body.name + '\n' + req.body.email + '\n' + req.body.text)
-    mail = new helper.Mail(from_email, subject, to_email, content)
- 
-    var sg = require('sendgrid')('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
+    mail = new helper.Mail(from_email, config.subject, to_email, content)
+
     var request = sg.emptyRequest({
         method: 'POST',
         path: '/v3/mail/send',
@@ -76,13 +53,10 @@ app.post('/form', function(req, res) {
         console.log(response.body)
         console.log(response.headers)
     })
-
-    
+   
      res.redirect(303, '/');
 });    
     
-
-
 
 app.listen(app.get('port'), function(){
     console.log('Express started on http://localhost:' + 
