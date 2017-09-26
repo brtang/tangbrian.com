@@ -1,11 +1,12 @@
+// Custom imports
+var config = require('./config');
+
 // NPM Packages
 var express = require('express');
 var path = require('path');
 var helper = require('sendgrid').mail
 var sg = require('sendgrid')(config.key);
 
-// Custom imports
-var config = require('./config/config');
 
 // Initialiaze Express server  
 var app = express();
@@ -25,23 +26,10 @@ app.get('/*', function(req, res){
 // Catch form responses from Contact form and use SendGrid to send the response to my email   
 app.post('/form', function(req, res) {
     
-   /* var form = new Form({
-        name: req.body.name,
-        email: req.body.email,
-        text: req.body.text
-    });
-    form.save(function(err, form){
-        if(err) return console.error(err);
-        console.dir(form);
-    });*/
-    
-    //var helper = require('sendgrid').mail
     from_email = new helper.Email(config.email)
     to_email = new helper.Email(config.email)
-    //subject = 'BrianTang.com: New Form Response'
     content = new helper.Content('text/plain', req.body.name + '\n' + req.body.email + '\n' + req.body.text)
     mail = new helper.Mail(from_email, config.subject, to_email, content)
-
     var request = sg.emptyRequest({
         method: 'POST',
         path: '/v3/mail/send',
